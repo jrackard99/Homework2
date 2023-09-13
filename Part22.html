@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+    table {
+        width: 100%;
+    }
+    td {
+        text-align: center;
+        padding: 15px;
+        border: 1px solid #ddd;
+    }
+    a {
+        text-decoration: none;
+        color: blue;
+    }
+    a:hover {
+        color: darkblue;
+    }
+</style>
+</head>
+<body>
+
+<h1>CNIT 133 Homework #2 - Part 2</h1>
+
+<table>
+    <tr>
+        <td><a href="Homework2.html">Home</a></td>
+        <td><a href="part1.html">Part 1 - Basic Operations</a></td>
+        <td><a href="ExtraCredit.html">Extra Credit</a></td>
+    </tr>
+</table>
+
+<form id="numberForm">
+    <input type="text" id="num1" placeholder="Enter first integer">
+    <input type="text" id="num2" placeholder="Enter second integer">
+    <input type="text" id="num3" placeholder="Enter third integer">
+    <button type="button" id="processBtn">Process Data</button>
+    <button type="reset" id="resetBtn">Clear</button>
+</form>
+
+<textarea id="resultArea"></textarea>
+<button type="button" id="fadeBtn">Fade Results</button>
+
+<script>
+    document.getElementById('processBtn').addEventListener('click', () => {
+        let num1 = parseInt(document.getElementById('num1').value);
+        let num2 = parseInt(document.getElementById('num2').value);
+        let num3 = parseInt(document.getElementById('num3').value);
+
+        if (isNaN(num1) || isNaN(num2) || isNaN(num3)) {
+            document.getElementById('resultArea').innerText = 'Please enter valid numbers.';
+            return;
+        }
+
+        let sum = num1 + num2 + num3;
+        let avg = sum / 3;
+        let product = num1 * num2 * num3;
+        let smallest = Math.min(num1, num2, num3);
+        let largest = Math.max(num1, num2, num3);
+
+        let resultText = `Sum: ${sum}\nAverage: ${avg}\nProduct: ${product}\nSmallest: ${smallest}\nLargest: ${largest}`;
+        document.getElementById('resultArea').innerText = resultText;
+    });
+
+    $('#fadeBtn').click(() => {
+        $('#resultArea').fadeToggle();
+    });
+
+    $('#processBtn').click(() => {
+        $('#resultArea').fadeIn();
+    });
+</script>
+
+</body>
+</html>
